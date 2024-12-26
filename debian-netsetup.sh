@@ -3,6 +3,13 @@
 # Exit on error
 set -e
 
+# Update and upgrade packages
+sudo apt update && sudo apt upgrade -y
+
+# Install depndencies
+echo "Updating and nstalling dependencies..."
+sudo apt install -y net-tools
+
 # Function to convert CIDR to subnet mask
 cidr_to_netmask() {
     local cidr=$1
