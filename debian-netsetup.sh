@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Exit on error
+set -e
+
 # Function to convert CIDR to subnet mask
 cidr_to_netmask() {
     local cidr=$1
