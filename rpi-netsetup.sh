@@ -4,7 +4,7 @@
 set -e
 
 # Prompt for network configuration
-DEFAULT_INTERFACE=$(nmcli -t -f DEVICE,STATE dev | grep ':connected' | cut -d: -f1)
+DEFAULT_INTERFACE=$(nmcli -t -f DEVICE,STATE dev | grep ':connected' | grep -v 'lo:' | cut -d: -f1)
 DEFAULT_IP_ADDRESS=$(nmcli -g IP4.ADDRESS dev show "$DEFAULT_INTERFACE" | head -n1 | cut -d/ -f1)
 DEFAULT_GATEWAY=$(nmcli -g IP4.GATEWAY dev show "$DEFAULT_INTERFACE")
 DEFAULT_DNS_SERVER=$(nmcli -g IP4.DNS dev show "$DEFAULT_INTERFACE" | head -n1 || echo "8.8.8.8")
